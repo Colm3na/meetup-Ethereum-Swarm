@@ -42,7 +42,11 @@ Passwd:user
 ```
 _En el `.bash_history` podéis observar todos los comandos que se han utilizado en el proceso de instalación, de igual manera `history` también muestra los comandos introducidos durante el proceso de instalación_
 
-**Si importamos la imagen de virtualbox:**
+_En el `/home/` he creado una carpeta llamada  `/swarm` con un HTML muy básico para poder hacer una prueba de nuestra primera web en Swarm_
+
+_En `/home/Documentos/` hay un archivo llamado `infoAccountSwarm`, en el podeis encontrar la wallet que se ha creado, e información sobre la misma y sobre el nodo_
+
+# Si importamos la imagen de virtualbox:
 - Abrimos una terminal y creamos una sesión nueva con [tmux](https://github.com/tmux/tmux/wiki):
 ```
 $ tmux
@@ -50,10 +54,25 @@ $ tmux
 - Esa sesión de tmux la dividimos en dos pulsando ` Ctrl + b + " ` (para más información sobre `tmux` [aquí](https://man.openbsd.org/OpenBSD-current/man1/tmux.1) y [aquí](https://raw.githubusercontent.com/tmux/tmux/master/README)).
 - En una de las divisiones ejecutamos el cliente ligero (_en este caso usamos Ropsten_):
 ```
-
+$ geth --testnet --syncomde=light
 ```
+- En la otra división conectamos nuestro nodo con la cuenta generada:
+```
+$ swarm -bzzaccount 50385f84ca4fa0d2934fa5a3e00ccb165683f1b9
+```
+- Abrimos una nueva terminal y creamos el hash de nuestro HTML básico:
+```
+$ swarm up /home/user/swarm/index.html
+```
+^Este nos devuelve (recordad que el hash puede variar): `fe1c81c0a0462d112502c57994191800b03c35303ab3be7f65119d0d28aaf45e`
+
+- Abrimos el navegador en localhost y añadimos el hash generado anteriormente:
+[localhost:8500/bzz:/fe1c81c0a0462d112502c57994191800b03c35303ab3be7f65119d0d28aaf45e](localhost:8500/bzz:/fe1c81c0a0462d112502c57994191800b03c35303ab3be7f65119d0d28aaf45e)
+
+_Enhorabuena!! con estos pasos ya tendríamos nuestro HTML básico en Swarm!_
 
 
+# Si hacemos una instalación desde cero
 ## Dependencias: 
 Necesitamos tener [Go](https://golang.org/) y [Git](http://git.org/) instalado.
 
