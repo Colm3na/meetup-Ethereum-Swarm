@@ -62,7 +62,9 @@ Necesitamos tener [Go](https://golang.org/) y [Git](http://git.org/) instalado.
 ```
 $ tmux new-session \; split-window -h \; split-window -v
 ```
-> Para conocer más comandos y atajos disponibles en tmux podéis visitar la siguiente [web](https://tmuxcheatsheet.com/)
+>Para movernos entre las terminales de tmux usaremos `Ctrl+b →`, `Ctrl+b ←`...
+
+>Para conocer más comandos y atajos disponibles en tmux podéis visitar la siguiente [web](https://tmuxcheatsheet.com/)
 - En una de las divisiones ejecutamos el cliente ligero (_en este caso usamos Ropsten_):
 ```
 $ geth --testnet --syncmode=light
