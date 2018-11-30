@@ -1,6 +1,6 @@
 # Meetup Ethereum Sevilla: Swarm.
 ![EthSvq](./images/EthSvq.jpg)
-Repositorio para el meetup de Ξthereum Sevilla sobre Swarm que se realizará el Jueves 6 de Noviembre en la [Colmena](https://www.coworkingcolmena.com/).
+Repositorio para el [meetup](https://www.meetup.com/es-ES/Ethereum-Meetup-Sevilla/events/256802370/) de Ξthereum Sevilla sobre Swarm que se realizará el Jueves 6 de Diciembre en la [Colmena](https://www.coworkingcolmena.com/).
 
 
 # Introducción
