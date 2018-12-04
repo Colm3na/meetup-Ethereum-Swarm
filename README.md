@@ -82,7 +82,7 @@ $ swarm up /home/user/swarm/index.html
 _Enhorabuena!! con estos pasos ya tendríamos nuestro HTML básico en Swarm!_
 
 
-## · Si hacemos una instalación desde cero
+## · Haciendo una instalación desde cero:
 ### Dependencias
 Necesitamos tener [Go](https://golang.org/) y [Git](http://git.org/) instalado.
 
@@ -91,7 +91,9 @@ Necesitamos tener [Go](https://golang.org/) y [Git](http://git.org/) instalado.
 sudo apt install -y git
 ```
 
-- Instalación de `Go` (_En este caso vamos a instalar la version `1.10` podeis mirar [aqui](https://golang.org/dl/) si queréis instalar otra versión_):
+- Instalación de `Go`:
+
+(_En este caso vamos a instalar la version `1.10` podeis mirar [aqui](https://golang.org/dl/) si queréis instalar otra versión_)
 ```
 wget -c 'https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz' -O go1.10.3.linux-amd64.tar.gz 
 ```
@@ -102,12 +104,12 @@ sudo tar -C /usr/local -xzf go1.10.3.linux-amd64.tar.gz
 sudo rm -Rf go1.10.3.linux-amd64.tar.gz 
 ```
 
-- Metemos `Go` en nuestro Path, editamos nuestro `.profile`:
+- Metemos `Go` en nuestro Path, editando nuestro `.profile`:
 ```
 nano $HOME/.profile
 ```
 
-- Añadimos las siguientes lineas al final:
+- Añadimos las siguientes líneas al final:
 ```
 PATH="$PATH:/usr/local/go/bin"
 GOPATH="$HOME/go"
@@ -121,17 +123,17 @@ source $HOME/.profile
 
 _Si escribimos `go version` debería mostrarnos la versión que tenemos instalada._
 
-- En mi caso suelo usar `tmux` para dejar aplicaciones corriendo en segundo plano, pero podéis usar la más cómoda para ustedes, instalamos `tmux`:
+- En mi caso suelo usar `tmux` para dejar aplicaciones corriendo en segundo plano, pero podéis usar la más cómoda para ustedes, procedemos con la instalación de `tmux`:
 ```
 sudo apt install -y tmux
 ```
 
-## Procedemos con la instalación de un nodo de Ethereum, usaremos un nodo de  `Geth` 
-_Podemos instalarlo desde el código fuente, mas información [aquí](https://github.com/ethereum/go-ethereum)_
+## Instalamos un nodo de Ethereum (usaremos `Geth`) 
+_Podemos instalarlo desde el código fuente, más información [aquí](https://github.com/ethereum/go-ethereum)_
 
 - Instalamos dependencias:
 ```
-sudo apt-get install software-properties-common
+sudo apt-get install -y software-properties-common
 ```
 
 - Añadimos el repositorio de Ethereum:
@@ -141,7 +143,7 @@ sudo add-apt-repository -y ppa:ethereum/ethereum
 
 - Acutalizamos e instalamos la versión estable de swarm:
 ```
-sudo apt-get install ethereum-swarm
+sudo apt-get install -y ethereum-swarm
 ```
 
 - Finalmente instalamos el demonio de `geth`:
@@ -159,7 +161,9 @@ swarm version
 geth account new 
 ```
 
-_Una vez que hemos introducido nuestra contraseña debería de mostarnos algo así `Address: {9r3cd699C0lm3n41dpow40098ad8f5587b538f0f1}`_
+_Una vez que hemos introducido nuestra contraseña debería de mostarnos algo así:_ 
+
+`Address: {9r3cd699C0lm3n41dpow40098ad8f5587b538f0f1}`
 
 - En una ventana de `tmux` iniciamos el nodo de Ethereum (_usaremos un cliente ligero, podemos dividir la pantalla pulsando `Ctrl + b + "`_):
 ```
@@ -172,7 +176,7 @@ _Si tenemos problemas con el nodo y necesitamos borrar la base de datos lo podem
 swarm --bzzaccount 9r3cd699C0lm3n41dpow40098ad8f5587b538f0f1 
 ```
 
-- Verificamos que Swarm esta funcionando, abrimos nuestro navegador en [localhost en el puerto 8500](http://localhost:8500/), 
+- Verificamos que Swarm esta funcionando, abrimos nuestro navegador en [localhost y el puerto 8500](http://localhost:8500/) 
 
 - Creamos un `HTML` básico para poder mostrarlo y ver el funcionamiento, copiamos la ruta hacia ese archivo (_en nuestro caso la ruta es: `/home/swarm/example.html`_) y creamos un hash de ese archivo:
 ``` 
@@ -189,9 +193,9 @@ fe1c81c0a0462d112502c57994191800b03c35303ab3be7f65119d0d28aaf45e
 localhost:8500/bzz:/fe1c81c0a0462d112502c57994191800b03c35303ab3be7f65119d0d28aaf45e
 ```
 
-_Como podemos ver ha sido bastante fácil todo el proceso, espero que esta guía les sirva de ayuda_
+_Como podemos ver ha sido bastante fácil todo el proceso, espero que esta guía les sirva de ayuda._
 
-**Si comprobais que algo no está bien o no funciona correctamente, podéis hacer un `PR` para que entre tod@s podamos tener un documento que sirva de ayuda.**
+**Si comprobáis que algo no está bien o no funciona correctamente, podéis hacer un `Pull Request` para que entre tod@s podamos tener un documento que sirva de ayuda.**
 
 **Gracias a la [Colmena](https://www.coworkingcolmena.com/) por cedernos el espacio y a todos los asistentes por venir a pasar un buen rato aprendiendo juntos sobre la tecnología que más nos gusta.**
 
