@@ -48,10 +48,6 @@ En `/home/user/Documentos/` hay un archivo llamado `infoAccountSwarm`, en él po
 
 _En el `.bash_history` podéis observar todos los comandos que se han utilizado en el proceso de instalación. De igual manera `history` también muestra los comandos introducidos durante el proceso de instalación_
 
-## · Si hacemos una instalación desde cero
-### Dependencias
-Necesitamos tener [Go](https://golang.org/) y [Git](http://git.org/) instalado.
-
 
 # Nuestra primera web
 >Por comodidad usaremos [tmux](https://github.com/tmux/tmux/wiki) para disponer de más de una terminal en la misma ventana. Se pueden seguir estos pasos simplemente abriendo dos terminales o usando cualquier otra alternativa que prefiera el usuario ([terminator](https://launchpad.net/terminator), por ejemplo)
@@ -86,12 +82,120 @@ $ swarm up /home/user/swarm/index.html
 _Enhorabuena!! con estos pasos ya tendríamos nuestro HTML básico en Swarm!_
 
 
+## · Si hacemos una instalación desde cero
+### Dependencias
+Necesitamos tener [Go](https://golang.org/) y [Git](http://git.org/) instalado.
 
+- Instalamos `git`:
+```
+sudo apt install -y git
+```
 
+- Instalación de `Go` (_En este caso vamos a instalar la version `1.10` podeis mirar [aqui](https://golang.org/dl/) si queréis instalar otra versión_):
+```
+wget -c 'https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz' -O go1.10.3.linux-amd64.tar.gz 
+```
+```
+sudo tar -C /usr/local -xzf go1.10.3.linux-amd64.tar.gz 
+```
+```
+sudo rm -Rf go1.10.3.linux-amd64.tar.gz 
+```
 
+- Metemos `Go` en nuestro Path, editamos nuestro `.profile`:
+```
+nano $HOME/.profile
+```
 
+- Añadimos las siguientes lineas al final:
+```
+PATH="$PATH:/usr/local/go/bin"
+GOPATH="$HOME/go"
+PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
+```
 
+- Después recargamos nuestra terminal:
+```
+source $HOME/.profile 
+```
 
+_Si escribimos `go version` debería mostrarnos la versión que tenemos instalada._
+
+- En mi caso suelo usar `tmux` para dejar aplicaciones corriendo en segundo plano, pero podéis usar la más cómoda para ustedes, instalamos `tmux`:
+```
+sudo apt install -y tmux
+```
+
+## Procedemos con la instalación de un nodo de Ethereum, usaremos un nodo de  `Geth` 
+_Podemos instalarlo desde el código fuente, mas información [aquí](https://github.com/ethereum/go-ethereum)_
+
+- Instalamos dependencias:
+```
+sudo apt-get install software-properties-common
+```
+
+- Añadimos el repositorio de Ethereum:
+```
+sudo add-apt-repository -y ppa:ethereum/ethereum
+```
+
+- Acutalizamos e instalamos la versión estable de swarm:
+```
+sudo apt-get install ethereum-swarm
+```
+
+- Finalmente instalamos el demonio de `geth`:
+```
+go install ./cmd/geth
+```
+
+- Comprobamos que la instalación de Swarm se ha realizado correctamente:
+```
+swarm version
+```
+
+- Creamos una cuenta de Ethereum:
+```
+geth account new 
+```
+
+_Una vez que hemos introducido nuestra contraseña debería de mostarnos algo así `Address: {9r3cd699C0lm3n41dpow40098ad8f5587b538f0f1}`_
+
+- En una ventana de `tmux` iniciamos el nodo de Ethereum (_usaremos un cliente ligero, podemos dividir la pantalla pulsando `Ctrl + b + "`_):
+```
+geth --testnet --syncmode=light
+```
+_Si tenemos problemas con el nodo y necesitamos borrar la base de datos lo podemos hacer con: `geth --testnet removedb`_
+
+- Usamos la cuenta creada anteriormente para conectar con swarm (_recordad modificarla por la que hayais creado_):
+```
+swarm --bzzaccount 9r3cd699C0lm3n41dpow40098ad8f5587b538f0f1 
+```
+
+- Verificamos que Swarm esta funcionando, abrimos nuestro navegador en [localhost en el puerto 8500](http://localhost:8500/), 
+
+- Creamos un `HTML` básico para poder mostrarlo y ver el funcionamiento, copiamos la ruta hacia ese archivo (_en nuestro caso la ruta es: `/home/swarm/example.html`_) y creamos un hash de ese archivo:
+``` 
+swarm up /home/swarm/example.html
+```
+
+- Este nos devuelve:
+```
+fe1c81c0a0462d112502c57994191800b03c35303ab3be7f65119d0d28aaf45e
+```
+
+- Si abrimos el navegador en localhost con el hash generado podemos ver nuestro archivo `HTML`:
+```
+localhost:8500/bzz:/fe1c81c0a0462d112502c57994191800b03c35303ab3be7f65119d0d28aaf45e
+```
+
+_Como podemos ver ha sido bastante fácil todo el proceso, espero que esta guía les sirva de ayuda_
+
+**Si comprobais que algo no está bien o no funciona correctamente, podéis hacer un `PR` para que entre tod@s podamos tener un documento que sirva de ayuda.**
+
+**Gracias a la [Colmena](https://www.coworkingcolmena.com/) por cedernos el espacio y a todos los asistentes por venir a pasar un buen rato aprendiendo juntos sobre la tecnología que más nos gusta.**
+
+_Recordad que dar una estrella :star: al repositorio es reconocer el trabajo y siempre son bienvenidas_ :smile:
 
 
 
