@@ -144,10 +144,13 @@ sudo add-apt-repository -y ppa:ethereum/ethereum
 ```
 sudo apt-get update
 ```
-
 - Acutalizamos e instalamos la versión estable de swarm:
 ```
 sudo apt-get install -y ethereum-swarm
+```
+- Instalamos la versión estable de swarm:
+```
+sudo apt-get install -y geth
 ```
 
 - Finalmente instalamos el demonio de `geth`:
