@@ -136,14 +136,13 @@ _Podemos instalarlo desde el código fuente, más información [aquí](https://g
 sudo apt-get install -y software-properties-common
 ```
 
-- Actualizamos repositorio:
-```
-sudo apt-get update
-```
-
 - Añadimos el repositorio de Ethereum:
 ```
 sudo add-apt-repository -y ppa:ethereum/ethereum
+```
+- Actualizamos repositorio:
+```
+sudo apt-get update
 ```
 
 - Acutalizamos e instalamos la versión estable de swarm:
